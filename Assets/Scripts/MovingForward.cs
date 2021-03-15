@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPlayer : MonoBehaviour
+public class MovingForward : MonoBehaviour
 {
-    public GameObject player;
-    private Vector3 offset = new Vector3(10.0f, 6.0f, 0.0f);
+    public float speed = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + offset;
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 }

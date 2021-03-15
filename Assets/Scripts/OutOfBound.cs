@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPlayer : MonoBehaviour
+public class OutOfBound : MonoBehaviour
 {
-    public GameObject player;
-    private Vector3 offset = new Vector3(10.0f, 6.0f, 0.0f);
+    private float destroyTime = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +14,6 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + offset;
+        Destroy(gameObject, destroyTime);
     }
 }
