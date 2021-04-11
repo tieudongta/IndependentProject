@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DetectCollision : MonoBehaviour
 {
+    private CarController carCtrl;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Game Over");
+        Destroy(gameObject);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OutOfBound : MonoBehaviour
 {
-    private float destroyTime = 10.0f;
+    private float destroyTime = 13.0f;
     // Start is called before the first frame update
     void Start()
     {

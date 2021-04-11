@@ -4,9 +4,31 @@ using UnityEngine;
 
 public class MailDrop : MonoBehaviour
 {
+    public static int mailCount = 0;
+    public CarController carCtr;
+    private void Start()
+    {
+        ++MailDrop.mailCount;
+    }
+    private void LateUpdate()
+    {
+        
+    }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Mail dropped");
-        Destroy(gameObject);
+        if (other.CompareTag("Player"))
+        {
+            GetComponent<AudioSource>().Play();
+            Destroy(gameObject, 0.1f);
+        }
+    }
+    private void OnDestroy()
+    {
+        --MailDrop.mailCount;
+        if (MailDrop.mailCount <= 0)
+        {
+            carCtr.gameOver = true;
+            Debug.Log("Win");
+        }
     }
 }
