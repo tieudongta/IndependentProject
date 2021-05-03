@@ -8,6 +8,8 @@ TagManager:
   - MailBox
   - House
   - Marker
+  - Pole
+  - Timer
   layers:
   - Default
   - TransparentFX

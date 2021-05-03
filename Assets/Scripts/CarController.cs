@@ -22,8 +22,8 @@ public class CarController : MonoBehaviour
     private float maxAcceleration = 20.0f;
     [SerializeField]
     private float turnSensitivity = 1.0f;
-    [SerializeField]
-    private float maxSteerAngle = 45.0f;
+    //[SerializeField]
+    //private float maxSteerAngle = 45.0f;
     [SerializeField]
     private Vector3 _centerOfMass;
     [SerializeField]
@@ -46,7 +46,7 @@ public class CarController : MonoBehaviour
     private float inputX, inputY;
     private bool isBreaking;
     private Rigidbody _rb;
-
+    public GameController gameCtrl;
     public bool gameOver = false;
     // Start is called before the first frame update
     private void Start()
@@ -59,11 +59,11 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!gameOver && MailDrop.mailCount > 0)
+        if (!gameCtrl.gameOver && MailDrop.mailCount > 0)
         {
             AnimateWheels();
             GetInputs();
-            Debug.Log(MailDrop.mailCount);
+            //Debug.Log(MailDrop.mailCount);
         }
         else
         {
@@ -74,7 +74,7 @@ public class CarController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!gameOver && MailDrop.mailCount > 0) {
+        if (!gameCtrl.gameOver && MailDrop.mailCount > 0) {
             Move();
             Turn();
             Brake();
@@ -132,7 +132,7 @@ public class CarController : MonoBehaviour
         if (other.gameObject.CompareTag("House") || other.gameObject.CompareTag("Vehicle"))
         {
             expParticle.Play();
-            gameOver = true;
+            gameCtrl.gameOver = true;
             Debug.Log(other.gameObject.tag);
             asPlayer.PlayOneShot(crashSound, 1.0f);
         }

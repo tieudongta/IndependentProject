@@ -5,10 +5,11 @@ using UnityEngine;
 public class MailDrop : MonoBehaviour
 {
     public static int mailCount = 0;
-    public CarController carCtr;
+    GameController gameCtr;
     private void Start()
     {
         ++MailDrop.mailCount;
+        gameCtr = GameObject.FindObjectOfType<GameController>();
     }
     private void LateUpdate()
     {
@@ -18,6 +19,7 @@ public class MailDrop : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            gameCtr.Score += 10;
             GetComponent<AudioSource>().Play();
             Destroy(gameObject, 0.1f);
         }
@@ -27,7 +29,7 @@ public class MailDrop : MonoBehaviour
         --MailDrop.mailCount;
         if (MailDrop.mailCount <= 0)
         {
-            carCtr.gameOver = true;
+            //carCtr.gameOver = true;
             Debug.Log("Win");
         }
     }

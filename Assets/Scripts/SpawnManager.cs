@@ -6,11 +6,10 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject[] vehiclePrefabs;
     public GameObject[] vehiclePrefabs1;
-    private CarController carCtrl;
+    public GameController gameCtrl;
     // Start is called before the first frame update
     void Start()
     {
-        carCtrl = GameObject.Find("Player").GetComponent<CarController>();
         float randomInterval = Random.Range(10.5f, 20.0f);
         InvokeRepeating("SpawnRandomVehicle", 10.0f, randomInterval);
         InvokeRepeating("SpawnRandomVehicle1", 6.0f, randomInterval);
@@ -24,16 +23,16 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnRandomVehicle()
     {
-        if (!carCtrl.gameOver)
+        if (!gameCtrl.gameOver)
         {
             int vehicleIndex = Random.Range(0, vehiclePrefabs.Length);
-            Vector3 startingPos = new Vector3(-13, 0, -60);
+            Vector3 startingPos = new Vector3(-25, 0, -60);
             Instantiate(vehiclePrefabs[vehicleIndex], startingPos, vehiclePrefabs[vehicleIndex].transform.rotation);
         }
     }
     void SpawnRandomVehicle1()
     {
-        if (!carCtrl.gameOver)
+        if (!gameCtrl.gameOver)
         {
             int vehicleIndex = Random.Range(0, vehiclePrefabs1.Length);
             Vector3 startingPos = new Vector3(-110, 0, -20);
