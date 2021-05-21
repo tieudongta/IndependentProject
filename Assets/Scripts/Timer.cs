@@ -16,11 +16,14 @@ public class Timer : MonoBehaviour
     }
 
     // Update is called once per frame
-    [System.Obsolete]
     void Update()
     {
         //Reduce time
-        CountDown -= Time.deltaTime;
-        gameCtr.TimeLeft = Mathf.Round(CountDown);
+        if (gameCtr.gameOver)
+        {
+            Debug.Log("Stop count down.");
+        }
+        //CountDown -= Time.deltaTime;
+        //gameCtr.TimeLeft = Mathf.Round(CountDown);
     }
 }

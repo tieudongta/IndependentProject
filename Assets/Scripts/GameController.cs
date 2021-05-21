@@ -1,51 +1,81 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 public class GameController : MonoBehaviour
 {
-    // Game Score
     public int Score;
-    //prefix
-    //public string ScorePrefix = string.Empty;
-    //score text object
-    //public Text ScoreText = null;
-    //time text object
-    //public Text TimeText = null;
-    //CounDown
     public float TimeLeft;
-    //prefix
-    //public string TimePrefix = string.Empty;
-    //public GameObject completeLevelUI;
-    //public GameObject gameOverUI;
-    //Can text object
-    //public Text CanText = null;
-    //prefix
-    //public string CanPrefix = string.Empty;
-    //Game over text
-    //public Text GameOverText = null;
     public bool gameOver = false;
-    //public float restartDelay;
-    public void LevelComplete()
-    {
-    }
-    public void LevelFail()
-    {
-    }
-    public static GameController ThisInstance = null;
+    public TextMeshProUGUI textScore;
+    public TextMeshProUGUI textTime;
+    public TextMeshProUGUI textGameOver;
+    public Button restartBtn;
+    public float restartDelay;
+    public GameObject titleScreen;
+    public bool gameActive = false;
+    public GameObject spawnManager;
+    public GameObject mailGenerator;
+    public GameObject timer;
+    public GameObject instructionScreen;
+    public GameObject creditScreen;
     //---------------
     void Awake()
     {
-        ThisInstance = this;
+        titleScreen.gameObject.SetActive(true);
+        //ThisInstance = this;
+        TimeLeft = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
+        textScore.text = "Score: " + Score;
+        textTime.text = "Timer: " + TimeLeft;
         if (TimeLeft <= 0)
         {
             gameOver = true;
         }
+        if (gameOver)
+        {
+            textGameOver.gameObject.SetActive(true);
+            restartBtn.gameObject.SetActive(true);
+        }
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void StartGame()
+    {
+        titleScreen.gameObject.SetActive(false);
+        spawnManager.gameObject.SetActive(true);
+        mailGenerator.gameObject.SetActive(true);
+        timer.gameObject.SetActive(true);
+    }
+    public void Instruction()
+    {
+        instructionScreen.gameObject.SetActive(true);
+        titleScreen.gameObject.SetActive(false);
+    }
+    public void ReturnToMainMenu()
+    {
+        instructionScreen.gameObject.SetActive(false);
+        titleScreen.gameObject.SetActive(true);
+    }
+    public void Credit()
+    {
+        creditScreen.gameObject.SetActive(true);
+        titleScreen.gameObject.SetActive(false);
+    }
+    public void ReturnToMainMenu1()
+    {
+        creditScreen.gameObject.SetActive(false);
+        titleScreen.gameObject.SetActive(true);
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
     //-----------
 

@@ -22,7 +22,11 @@ public class CountDown : MonoBehaviour
     void Update()
     {
         //Reduce time
-        CountDowner -= Time.deltaTime;
-        gameCtr.TimeLeft = Mathf.Round(CountDowner);
+        if (!gameCtr.gameOver)
+        {
+            CountDowner -= Time.deltaTime;
+            gameCtr.TimeLeft = Mathf.Round(CountDowner);
+        }
+        
     }
 }

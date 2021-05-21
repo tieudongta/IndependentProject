@@ -852,7 +852,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAcceleration: 30
   turnSensitivity: 1
-  maxSteerAngle: 45
   _centerOfMass: {x: 0, y: 0, z: 0}
   wheels:
   - model: {fileID: 8348817952662733116}
@@ -872,6 +871,7 @@ MonoBehaviour:
   expParticle: {fileID: 6275676906500211270}
   crashSound: {fileID: 8300000, guid: 4bcde6de2166e41e284ec46d8a01fb90, type: 3}
   carSound: {fileID: 8300000, guid: 834bc99524a174a378e982623582c06d, type: 3}
+  gameCtrl: {fileID: 0}
   gameOver: 0
 --- !u!1001 &3005284711112994314
 PrefabInstance:

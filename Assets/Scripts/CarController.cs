@@ -70,6 +70,10 @@ public class CarController : MonoBehaviour
             isBreaking = true;
             Brake();
         }
+        if (transform.position.y < 0)
+        {
+            gameCtrl.gameOver = true;
+        }
     }
 
     private void LateUpdate()

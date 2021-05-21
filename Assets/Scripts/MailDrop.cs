@@ -30,7 +30,7 @@ public class MailDrop : MonoBehaviour
         if (MailDrop.mailCount <= 0)
         {
             //carCtr.gameOver = true;
-            Debug.Log("Win");
+            //Debug.Log("Win");
         }
     }
 }
